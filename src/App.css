@@ -15,6 +15,10 @@
     box-shadow: 0px 3px 7px rgba(88, 85, 85, 0.9);
     padding: 20px;
 }
+
+.generator h2{
+    border-bottom: 1px solid #d4dbe5;
+}
 .generator__header{
     text-align: center;
     color: black;
