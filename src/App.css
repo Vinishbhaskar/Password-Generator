@@ -2,10 +2,11 @@
     min-height: 100vh;
     background-color: #20262E;
 }
+
 .container{
     width: 350px;
     margin: 0 auto;
-    padding-top: 200px;
+    padding-top: 100px;
 }
 
 .generator{

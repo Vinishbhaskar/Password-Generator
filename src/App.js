@@ -1,10 +1,93 @@
+import { useState } from "react"
 import "./App.css"
-import AppLayout from "./AppLayout"
+import { numbers, specailCharacters, upperCaseLetters, lowerCaseLetters } from "./Characters"
 
 function App() {
+  const [password, setPassword]= useState('')
+  const [passwordLength, setPasswordLength] = useState(12)
+  const [includeUppercase, setIncludeUppercase] = useState(true)
+  const [includeLowercase, setIncludeLowercase] = useState(false)
+  const [includeNumbers, setIncludeNumbers] = useState(true)
+  const [includeSymbols, setIncludeSymbols] = useState(false)
+
+  const handleGeneratePassword = (e) => {
+    let characterList = ''
+
+    if(includeLowercase){
+      characterList = characterList + lowerCaseLetters
+    }
+
+    if(includeUppercase){
+      characterList = characterList + upperCaseLetters
+    }
+
+    if(includeNumbers){
+      characterList = characterList + numbers
+    }
+
+    if(includeSymbols){
+      characterList = characterList + specailCharacters
+    }
+
+    setPassword(createPassword(characterList))
+  }
+
+  const createPassword = (characterList) => {
+    let password = ''
+    const characterListLength = characterList.length
+
+    for (let i =0; i < passwordLength; i++){
+      const characterIndex = Math.round(Math.random() * characterListLength)
+      password = password +characterList.charAt(characterIndex)
+    }
+    return password
+
+  }
+
+
   return (
-    <AppLayout/>
-  )
+    <div className="App">
+    <div className="container">
+      <div className="generator">
+        <h2 className="generator__header">Password Generator</h2>
+        
+        <div className="generator__password">
+          <h3>{password}</h3>
+          <button className="copy__btn">
+            <i className="far fa-clipboard"></i>
+          </button>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="password-strength">Password Length</label>
+          <input defaultValue={passwordLength} onChange={(e)=> setPassword(e.target.value)} type="number" id="password-strength" className="password-strength" max="20" min="8" />
+        </div>
+        
+        <div className="form-group">
+          <label htmlFor="uppercase-letters">Include UpperCase Letter</label>
+          <input checked={includeUppercase} onChange={(e) => setIncludeUppercase(e.target.checked)} type="checkbox" id="uppercase-letters" className="uppercase-letters" />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="lowercase-letters">Include LowerCase Letter</label>
+          <input checked={includeLowercase} onChange={(e) => setIncludeLowercase(e.target.checked)} type="checkbox" id="lowercase-letters" className="lowercase-letters" />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="include-numbers">Include Numbers</label>
+          <input checked={includeNumbers} onChange={(e) => setIncludeNumbers(e.target.checked)} type="checkbox" id="include-numbers" className="include-numbers" />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="include-symbols">Include Symbols</label>
+          <input checked={includeSymbols} onChange={(e) => setIncludeSymbols(e.target.checked)} type="checkbox" id="include-symbols" className="include-symbols" />
+        </div>
+
+        <button onClick={handleGeneratePassword} className="generator__btn">Generate Password</button>
+      </div>
+    </div>
+  </div>
+)
 }
 
 export default App
