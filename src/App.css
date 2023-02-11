@@ -1,38 +1,63 @@
-.App {
-  text-align: center;
+.App{
+    min-height: 100vh;
+    background-color: #20262E;
+}
+.container{
+    width: 350px;
+    margin: 0 auto;
+    padding-top: 200px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.generator{
+    background-color:#EEEEEE;
+    border-radius: 10px;
+    box-shadow: 0px 3px 10px rgba(125, 125, 124, 0.9);
+    padding: 20px;
+}
+.generator__header{
+    text-align: center;
+    color: black;
+    margin-bottom: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.generator__password{
+    position: relative;
+    background: #323232;
+    padding: 13px 10px;
+    color: seashell;
+    height: 46px;
+    margin-bottom: 15px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.copy__btn{
+    position: absolute;
+    background-color: rgb(22, 233, 10);
+    color: black;
+    border:none;
+    height: 40px;
+    padding: 10px;
+    cursor: pointer;
+    top:3px;
+    right:3px;
 }
 
-.App-link {
-  color: #61dafb;
+.generator__btn{
+    background-color: #F55050;
+    border: 0.5px solid grey;
+    border-radius: 10px;
+    Color: black;
+    padding: 10px;
+    display: block;
+    width: 100%;
+    font-size: 20px;
+    cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form-group{
+    display: flex;
+    justify-content: space-between;
+    color: black;
+    margin-bottom: 15px;
+    font-size: medium;
+    font-weight: 500;
 }
