@@ -2,15 +2,25 @@ import { useState } from "react"
 import "./App.css"
 import { numbers, specailCharacters, upperCaseLetters, lowerCaseLetters } from "./Characters"
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { COPY_SUCESS } from "./message";
+
+
 function App() {
   const [password, setPassword]= useState('')
   const [passwordLength, setPasswordLength] = useState(12)
-  const [includeUppercase, setIncludeUppercase] = useState(true)
-  const [includeLowercase, setIncludeLowercase] = useState(false)
+  const [includeUppercase, setIncludeUppercase] = useState(false)
+  const [includeLowercase, setIncludeLowercase] = useState(true)
   const [includeNumbers, setIncludeNumbers] = useState(true)
   const [includeSymbols, setIncludeSymbols] = useState(false)
 
   const handleGeneratePassword = (e) => {
+
+    if(!includeLowercase && !includeUppercase && !includeNumbers && !includeSymbols){
+      notify('You must select one option', true)
+    }
+
     let characterList = ''
 
     if(includeLowercase){
@@ -44,7 +54,51 @@ function App() {
 
   }
 
+  const copyToClipboard =() =>{
+    const newTextArea = document.createElement('textarea')
+    newTextArea.innerText = password
+    document.body.appendChild(newTextArea)
+    newTextArea.select()
+    document.execCommand('copy')
+    newTextArea.remove()
+  }
 
+  const notify =(message, hasError = false) =>{
+    if(hasError){
+      toast.error(message, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+    }else
+    { toast(message, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      })
+    }
+  }
+
+  const handleCopyPassword = (e) => {
+    if(password ===''){
+      notify('Nothing to Copy',true)
+    }else{
+      copyToClipboard()
+      notify(COPY_SUCESS)
+    }
+    
+  }
+ 
   return (
     <div className="App">
     <div className="container">
@@ -53,14 +107,14 @@ function App() {
         
         <div className="generator__password">
           <h3>{password}</h3>
-          <button className="copy__btn">
+          <button onClick={handleCopyPassword} className="copy__btn">
             <i className="far fa-clipboard"></i>
           </button>
         </div>
 
         <div className="form-group">
           <label htmlFor="password-strength">Password Length</label>
-          <input defaultValue={passwordLength} onChange={(e)=> setPassword(e.target.value)} type="number" id="password-strength" className="password-strength" max="20" min="8" />
+          <input defaultValue={passwordLength} onChange={(e)=> setPasswordLength(e.target.value)} type="number" id="password-strength" className="password-strength" max="20" min="8" />
         </div>
         
         <div className="form-group">
@@ -84,6 +138,18 @@ function App() {
         </div>
 
         <button onClick={handleGeneratePassword} className="generator__btn">Generate Password</button>
+        <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        />
       </div>
     </div>
   </div>
