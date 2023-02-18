@@ -12,7 +12,7 @@
 .generator{
     background-color:#EEEEEE;
     border-radius: 10px;
-    box-shadow: 0px 3px 10px rgba(125, 125, 124, 0.9);
+    box-shadow: 0px 3px 7px rgba(88, 85, 85, 0.9);
     padding: 20px;
 }
 .generator__header{
@@ -91,7 +91,7 @@
     -webkit-appearance: none;
     height: 10px;
     border-radius: 5px;
-    background: #DAD0C2;
+    background: #bbb2a5;
     outline: none;
     opacity: 0.7;
     -webkit-transition: .2s;
