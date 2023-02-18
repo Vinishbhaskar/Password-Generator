@@ -108,13 +108,15 @@ function App() {
         <div className="generator__password">
           <h3>{password}</h3>
           <button onClick={handleCopyPassword} className="copy__btn">
-            <i className="far fa-clipboard"></i>
+            <i className="far fa-clipboard"></i> Copy
           </button>
         </div>
 
-        <div className="form-group">
+
+        <div className="form-group-value">
           <label htmlFor="password-strength">Password Length</label>
-          <input defaultValue={passwordLength} onChange={(e)=> setPasswordLength(e.target.value)} type="number" id="password-strength" className="password-strength" max="20" min="8" />
+          <div className="password-value">{passwordLength}</div>
+          <input defaultValue={passwordLength} onChange={(e)=> setPasswordLength(e.target.value)} type="range" id="password-strength" className="password-slider" max="20" min="5" step="1"/>
         </div>
         
         <div className="form-group">
@@ -157,3 +159,4 @@ function App() {
 }
 
 export default App
+

@@ -32,7 +32,7 @@
 
 .copy__btn{
     position: absolute;
-    background-color: rgb(22, 233, 10);
+    background-color: #EAFFD0;
     color: black;
     border:none;
     height: 40px;
@@ -43,15 +43,16 @@
 }
 
 .generator__btn{
-    background-color: #F55050;
+    background-color: #6D67E4;
     border: 0.5px solid grey;
     border-radius: 10px;
-    Color: black;
+    Color: #F2F7A1;
     padding: 10px;
     display: block;
     width: 100%;
     font-size: 20px;
     cursor: pointer;
+    font-weight: 600;
 }
 
 .form-group{
@@ -62,3 +63,68 @@
     font-size: medium;
     font-weight: 500;
 }
+.form-group-value{
+    display: flex;
+    justify-content: space-between;
+    color: black;
+    margin-bottom: 25px;
+    font-size: medium;
+    font-weight: 500;
+}
+.password-value{
+    padding: 1px;
+    border-radius: 15%;
+    position: relative;
+    font-size: medium;
+    font-weight: 600;
+}
+.password-slider{
+    position: absolute;
+    width: 280px;
+    cursor: pointer;
+    line-height: 53px;
+    display: inline-block;
+    margin-top: 30px;    
+}
+
+.password-slider {
+    -webkit-appearance: none;
+    height: 10px;
+    border-radius: 5px;
+    background: #DAD0C2;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+  .password-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #3282B8;
+    cursor: pointer;
+  }
+  
+  .password-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #4caf50;
+    cursor: pointer;
+  }
+  
+  .password-strength-weak {
+    background-color: #ff0000;
+  }
+  
+  .password-strength-medium {
+    background-color: #ffa500;
+  }
+  
+  .password-strength-strong {
+    background-color: #008000;
+  }
+  
